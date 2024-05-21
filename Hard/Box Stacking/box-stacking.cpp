@@ -27,13 +27,9 @@ class Solution{
             boxes.insert(make_pair(make_pair(length[i], height[i]), width[i]));
         }
         i = 0;
-        dp.push_back(boxes.begin()->second);
         for (multimap<pair<int,int>,int>::iterator it2 = boxes.begin();it2 !=
             boxes.end();it2++)
         {
-            if (it2 == boxes.begin())
-                continue;
-            i++;
             dp.push_back(it2->second);
             j = 0;
             for (multimap<pair<int,int>,int>::iterator it = boxes.begin();it != it2;
@@ -45,6 +41,7 @@ class Solution{
                         dp[i] = (it2->second + dp[j]);
                 j++;
             }
+            i++;
         }
         return *max_element(dp.begin(), dp.end());
     }
