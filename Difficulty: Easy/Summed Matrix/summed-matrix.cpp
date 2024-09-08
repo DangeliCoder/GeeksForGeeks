@@ -5,19 +5,24 @@ using namespace std;
 
 // } Driver Code Ends
 
+
+
 class Solution {
   public:
     long long sumMatrix(long long n, long long q) {
         // code here
-        if (n < 1 || q < 2)
-            return 0;
-        if (q < n)
-            return q - 1;
-        if (q <= (n * 2))
-            return n + 1 - (q - n);
-        return 0;
+        long long res;
+
+        if (n < q / 2 || q == 1)
+          return 0;
+        if (n >= q)
+          n = q - 1;
+        res = 2 * n - q + 1;
+        return res;
     }
 };
+
+
 
 //{ Driver Code Starts.
 int main() {
