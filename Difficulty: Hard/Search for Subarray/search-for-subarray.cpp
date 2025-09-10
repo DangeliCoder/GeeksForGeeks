@@ -5,9 +5,8 @@ class Solution {
         vector<int> pref, res;
         int j;
         
-        pref.resize(b.size());
+        pref.resize(b.size(), 0);
         j = 0;
-        pref[0] = 0;
         for (int i = 1;i < (int)b.size();i++)
         {
             if (b[i] == b[j])
@@ -16,15 +15,11 @@ class Solution {
                 pref[i] = j;
             }
             else
-            {
-                if (j == 0)
-                    pref[i] == 0;
-                else
+                if (j > 0)
                 {
-                    j = pref[j - 1];
+                    j = pref[j];
                     i--;
                 }
-            }
         }
         j = 0;
         for (int i = 0;i < (int)a.size();i++)
@@ -41,7 +36,7 @@ class Solution {
             else
                 if (j > 0)
                 {
-                    j = pref[j - 1];
+                    j = pref[j];
                     i--;
                 }
         }
